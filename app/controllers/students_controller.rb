@@ -12,15 +12,28 @@ class StudentsController < ApplicationController
 	end
 	
 	def create
-		@student = Student.create(params.require(:student).permit(:first_name, :last_name))
+		@student = Student.new(post_params(:first_name, :last_name))
+		@student.save
 		redirect_to student_path(@student)
 	end
 
 	def update
 		@student = Student.find(params[:id])
-		@student.update(params.require(:student))
-		@student.save
+		@student.update(post_params(:first_name, :last_name))
 		redirect_to student_path(@student)
 	end
+
+	
+
+	private
+ 
+ 
+	# We pass the permitted fields in as *args;
+	# this keeps `post_params` pretty dry while
+	# still allowing slightly different behavior
+	# depending on the controller action
+		def post_params(*args)
+		  params.require(:student).permit(*args)
+		end
 
 end
