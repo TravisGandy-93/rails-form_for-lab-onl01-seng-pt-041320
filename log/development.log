@@ -103,3 +103,8 @@ Started GET "/students/3" for 73.173.27.73 at 2020-09-23 16:23:51 +0000
 Processing by StudentsController#show as HTML
   Parameters: {"id"=>"3"}
   [1m[36mStudent Load (0.9ms)[0m  [1m[34mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering students/show.html.erb within layouts/application
+  Rendered students/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 25ms (Views: 17.0ms | ActiveRecord: 0.9ms)
+
+
